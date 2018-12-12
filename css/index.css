@@ -1,0 +1,652 @@
+/* demo styles
+  --------------------------------------------- */
+
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    font: 120% / 1.5 Arial;
+    background-color: #161616;
+    background-image: url("../images/starz.jpg");
+    background-repeat: repeat;
+    background-size: contain;
+    font-family: 'Lato';    
+    color: white;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, p {
+    margin-bottom: 1.5em;
+  }
+
+     /* centre the content in the parallax layers */
+  .title {
+    font-size:  4vh;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: center;
+    z-index: 100;
+    opacity: 0.7;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+  }
+  .section-title {
+    border: 0.5px solid white;
+    font-size: 16px;
+    letter-spacing: 1.5px;
+    padding: 12px;
+    opacity: 0.8;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+
+  .text {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .light {
+    font-size: 17px;
+    letter-spacing: 0px;
+  }
+
+  .bar-fixed{
+      z-index: 989;
+      position: fixed;
+      display: block;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #121212;
+      height: 52px; 
+      opacity: 0.8;
+    }
+
+
+
+  /* slide layout
+  --------------------------------------------- */
+  .slides{
+   overflow: hidden;
+  }
+
+  .slide-head {
+    position: relative;
+    padding: 0;
+    padding-bottom: 10vh;
+  }
+
+  .slide {
+    position: relative;
+    padding: 30px 0px;
+    padding-bottom: 10vh;
+    z-index: 3;
+  }
+
+  .slide__content {
+    margin: auto;
+  }
+
+  .slide__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index:2;
+  }
+
+  /* Pages */
+
+  #home {
+    height: 500px; /* fallback for older browsers */
+    height: 100vh;
+  }
+
+
+  .proj-description {
+    padding-bottom: 20vh;
+  }
+
+  .proj {
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    padding: 10px;
+    font-family: 'Inconsolata';    
+  }
+
+  .proj a {
+    color: white;
+    font-weight: 300;
+    text-decoration: none;
+    font-family: 'Lato';    
+  }
+
+  .proj a:hover  {
+    color: #79c29d;   
+  }
+
+  .proj img {
+    width: 100%;
+    opacity: 0.8;
+  }
+
+  /* fade in */
+
+  .fade {
+    animation: fadein 2s;
+    -moz-animation: fadein 2s; /* Firefox */
+    -webkit-animation: fadein 7s; /* Safari and Chrome */
+    -o-animation: fadein 2s; /* Opera */
+  }
+  @keyframes fadein {
+        from {
+            opacity:0;
+        }
+        to {
+            opacity:0.7;
+        }
+    }
+    @-moz-keyframes fadein { /* Firefox */
+        from {
+            opacity:0;
+        }
+        to {
+            opacity:0.7;
+        }
+    }
+    @-webkit-keyframes fadein { /* Safari and Chrome */
+        from {
+            opacity:0;
+        }
+        to {
+            opacity:0.7;
+        }
+    }
+    @-o-keyframes fadein { /* Opera */
+        from {
+            opacity:0;
+        }
+        to {
+            opacity: 0.7;
+        }
+    }
+
+   /* menu */
+
+.top-animate {
+  background: #fff;
+  top: 13px !important;
+  -webkit-transform: rotate(45deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(45deg);
+}
+
+.mid-animate { opacity: 0; }
+
+.bottom-animate {
+  background: #fff;
+  top: 13px !important;
+  -webkit-transform: rotate(-225deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(-225deg);
+}
+
+.top-menu {
+  top: 5px;
+  width: 25px;
+  height: 2px;
+  border-radius: 10px;
+  background-color: #F9A530;
+}
+
+.mid-menu {
+  top: 13px;
+  width: 25px;
+  height: 2px;
+  border-radius: 10px;
+  background-color: #F9A530;
+}
+
+.bottom-menu {
+  top: 21px;
+  width: 25px;
+  height: 2px;
+  border-radius: 10px;
+  background-color: #F9A530;
+}
+
+.menui {
+  background: #fff;
+  transition: 0.6s ease;
+  transition-timing-function: cubic-bezier(.75, 0, .29, 1.01);
+  margin-top: 10px;
+  position: absolute;
+}
+
+.icon {
+  z-index: 999;
+  position: fixed;
+  display: block;
+  padding: 8px;
+  padding-top: 6px;
+  height: 32px;
+  width: 32px;
+  margin-right: 15px;
+  top: 0;
+  right: 0;
+}
+
+.mobilenav {
+  top: 0;
+  right: 0;
+  z-index: 999;
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0.95;
+  text-align: center;
+}
+
+.mobilenav li {
+  list-style-type: none;
+  text-align: center;
+  padding: 10px;
+}
+
+.mobilenav li a {
+  font-size: 200%;
+  color: white;
+  text-decoration: none;
+  font-weight: 300;
+  letter-spacing: 3px;
+  width: 100%;
+}
+
+.mobilenav li a:hover {
+    color: #79c29d;
+}
+
+.mobilenav li:first-child { margin-top: 110px; }
+
+  /* misc
+  --------------------------------------------- */
+  .half-planet {
+    position: absolute;
+    overflow:auto;
+  }
+
+  .half-l {
+      position: relative;
+      left: 50%;
+  }
+  .half-r {
+      position: relative;
+      right: 50%;
+  }
+
+  /* rotate */
+  .mercury {
+    position: absolute;
+    right: 10vh;
+    top: 15vh;
+    width: 4vh;
+  }
+
+  .venus {
+    position: absolute;
+    right: 45vh;
+    top: 34vh;
+    width: 10.08vh;
+  }
+
+  .earth {
+    position: absolute;
+    left: 17vh;
+    top: 60vh;
+    width: 10.6vh;
+  }
+
+  .mars {
+    position: absolute;
+    left: 0vh;
+    top: 110vh;
+    width: 5.68vh;
+  }
+
+  .jupiter {
+    position: absolute;
+    left: -90vh;
+    top: 160vh;
+    width: 119vh;
+  }
+
+  .saturn {
+    position: absolute;
+    right: 0vh;
+    top: 240vh;
+    width: 100.56/3.5vh;
+  }
+
+  .uranus {
+    position: absolute;
+    left: -10vh;
+    top: 340vh;
+    width: 43.16vh;
+  }
+
+  .neptune {
+    position: absolute;
+    left: 10vh;
+    top: 400vh;
+    width: 41.2vh;
+  }
+
+  #hover-descrip {
+  border: 1px solid #ccc;
+  display: none;
+  font-size: 770px;
+  margin-top: 10px;
+  padding: 5px;
+  text-transform: uppercase;
+  z-index: 2;
+  color: white;
+  }
+
+  #planet {
+      z-index: 10;
+  }
+
+  #planet img:hover #hover-descrip{
+    display: block;
+  }
+
+
+
+  /*
+   * Animation 1: for Saturn.  Keep the planet in the "upright position".
+   */
+
+  .satelite {
+    width: 4vh;
+     -webkit-animation: orbit 50s linear infinite; /* Chrome, Safari 5 */
+         -moz-animation: orbit 50s linear infinite; /* Firefox 5-15 */
+           -o-animation: orbit 50s linear infinite; /* Opera 12+ */
+              animation: orbit 50s linear infinite; /* Chrome, Firefox 16+, IE 10+, Safari 5 */ 
+    
+  
+  }
+
+    .orion {
+    width: 2vh;
+     -webkit-animation: orbit-back 30s linear infinite; /* Chrome, Safari 5 */
+         -moz-animation: orbit-back 30s linear infinite; /* Firefox 5-15 */
+           -o-animation: orbit-back 30s linear infinite; /* Opera 12+ */
+              animation: orbit-back 30s linear infinite; /* Chrome, Firefox 16+, IE 10+, Safari 5 */ 
+    
+  
+  }
+
+  .jupiter-satelite {
+    position: absolute;
+    
+    left: -30vh;
+    top: 257vh;
+    width: 4vh;
+
+    -webkit-animation: orbit-far 50s linear infinite; /* Chrome, Safari 5 */
+         -moz-animation: orbit-far 50s linear infinite; /* Firefox 5-15 */
+           -o-animation: orbit-far 50s linear infinite; /* Opera 12+ */
+              animation: orbit-far 50s linear infinite; /* Chrome, Firefox 16+, IE 10+, Safari 5 */ 
+  }
+
+  .moon {
+    width: 3vh;
+
+    -webkit-animation: orbit-far 144s linear infinite; /* Chrome, Safari 5 */
+         -moz-animation: orbit-far 144s linear infinite; /* Firefox 5-15 */
+           -o-animation: orbit-far 144s linear infinite; /* Opera 12+ */
+              animation: orbit-far 144s linear infinite; /* Chrome, Firefox 16+, IE 10+, Safari 5 */ 
+  }
+
+  .moon-close {
+    width: 3vh;
+
+    -webkit-animation: orbit-m 2000s linear infinite; /* Chrome, Safari 5 */
+         -moz-animation: orbit-m 2000s linear infinite; /* Firefox 5-15 */
+           -o-animation: orbit-m 2000s linear infinite; /* Opera 12+ */
+              animation: orbit-m 2000s linear infinite; /* Chrome, Firefox 16+, IE 10+, Safari 5 */ 
+  }
+
+  .earth-moon {
+    -webkit-animation: orbit-far 144s linear infinite; /* Chrome, Safari 5 */
+         -moz-animation: orbit-far 144s linear infinite; /* Firefox 5-15 */
+           -o-animation: orbit-far 144s linear infinite; /* Opera 12+ */
+              animation: orbit-far 144s linear infinite; /* Chrome, Firefox 16+, IE 10+, Safari 5 */ 
+  }
+
+  @-webkit-keyframes orbit {
+    from {  -webkit-transform: rotate(0deg) translateX(100px); }
+    to   {  -webkit-transform: rotate(360deg) translateX(100px); }
+  }
+
+  @-moz-keyframes orbit {
+    from {  -moz-transform: rotate(0deg) translateX(100px); }
+    to   {  -moz-transform: rotate(360deg) translateX(100px); }
+  }
+
+  @-o-keyframes orbit {
+    from {  -o-transform: rotate(0deg) translateX(100px); }
+    to   {  -o-transform: rotate(360deg) translateX(100px); }
+  }
+
+  @keyframes orbit {
+    from {  transform: rotate(0deg) translateX(100px); }
+    to   {  transform: rotate(360deg) translateX(100px); }
+  }
+
+  @-webkit-keyframes orbit-back {
+    from {  -webkit-transform: rotate(360deg) translateX(50px);}
+    to   {  -webkit-transform: rotate(0deg) translateX(50px); }
+  }
+
+  @-moz-keyframes orbit-back {
+    from {  -webkit-transform: rotate(360deg) translateX(50px);}
+    to   {  -webkit-transform: rotate(0deg) translateX(50px); }
+  }
+
+  @-o-keyframes orbit-back {
+    from {  -webkit-transform: rotate(360deg) translateX(50px);}
+    to   {  -webkit-transform: rotate(0deg) translateX(50px); }
+  }
+
+  @keyframes orbit-back {
+    from {  -webkit-transform: rotate(360deg) translateX(50px);}
+    to   {  -webkit-transform: rotate(0deg) translateX(50px); }
+  }
+
+  @-webkit-keyframes orbit-far {
+    from {  -webkit-transform: rotate(0deg) translateX(300px); }
+    to   {  -webkit-transform: rotate(360deg) translateX(300px); }
+  }
+
+  @-moz-keyframes orbit-far {
+    from {  -moz-transform: rotate(0deg) translateX(300px); }
+    to   {  -moz-transform: rotate(360deg) translateX(300px); }
+  }
+
+  @-o-keyframes orbit-far {
+    from {  -o-transform: rotate(0deg) translateX(300px); }
+    to   {  -o-transform: rotate(360deg) translateX(300px); }
+  }
+
+  @keyframes orbit-far {
+    from {  transform: rotate(0deg) translateX(300px); }
+    to   {  transform: rotate(360deg) translateX(300px); }
+  }
+
+    @-webkit-keyframes orbit-m {
+    from {  -webkit-transform: rotate(360deg) translateY(140px); }
+    to   {  -webkit-transform: rotate(0deg) translateY(140px); }
+  }
+
+  @-moz-keyframes orbit-m {
+    from {  -moz-transform: rotate(360deg) translateY(140px); }
+    to   {  -moz-transform: rotate(0deg) translateY(140px); }
+  }
+
+  @-o-keyframes orbit-m {
+    from {  -o-transform: rotate(360deg) translateY(140px); }
+    to   {  -o-transform: rotate(0deg) translateY(140px); }
+  }
+
+  @keyframes orbit-m {
+    from {  transform: rotate(360deg) translateY(140px); }
+    to   {  transform: rotate(0deg) translateXY(140px); }
+  }
+
+  .logo:hover{
+    opacity: 0.5;
+  }
+  .logo-fixed {
+    z-index: 990;
+    position: fixed;
+    display: block;
+    padding: 8px;
+    padding-top: 6px;
+    width: 50px;
+    top: 0;
+    left: 0;
+  }
+
+  .logo {
+    padding: 10px;
+    width: 50px;
+  }
+
+  .footer {
+    text-align: center;
+  }
+
+  .blog{
+    color: orange;
+  }
+
+  .blog:hover {
+    color: white;
+  }
+
+  /*quote*/
+#buttonContainer{
+  width: 100%;
+  text-align: center;
+}
+#quoteButton{
+  width:150px;
+  margin-top: 10px;
+  border: 0.5px solid white;
+  color:white;
+  font-family: inherit;
+  font-weight: 300;
+  font-size: 14px;
+  padding:5px;
+  text-decoration: none;
+  text-align: center;
+}
+
+#quoteButton:hover{
+  cursor:pointer;
+  background:white;
+  color: black;  
+}
+#quoteButton:active{
+  cursor: pointer;
+}
+#quoteButton{
+  display: inline-block;
+}
+#quoteGenius{
+  font-style: italic;
+  font-weight: 300;
+  font-size: 3vh;
+  text-align: center;
+}
+
+
+    /* Large screen layout
+  --------------------------------------------- */ 
+   
+  @media screen and (min-width: 45em) {
+
+    /* parallax */
+    @supports ((perspective: 1px) and (not (-webkit-overflow-scrolling: touch))) {
+      html, body {
+        overflow: hidden;
+        height:100%;
+      }
+      body {
+        transform: translateZ(0px); /* Fix paint issues in Edge && Safari H/W acceleration */
+      }
+      .slides {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-perspective: 300px;
+        perspective: 300px;
+        -webkit-perspective-origin-x: 100%;
+        perspective-origin-x: 100%;
+      }
+      .slide, .slide__content {
+        transform-style: preserve-3d;
+        transform: translateZ(0); /* Safari H/W acceleration */
+      }
+      .slide__bg {
+         -webkit-transform: translateZ(-200px) scale(1.5);
+        transform: translateZ(-200px) scale(1.5);
+        transform-origin: 100% 100%;
+      }
+
+      .hoverfade img {
+        opacity: 0.7;
+      }
+
+      .hoverfade:hover img{
+        opacity: 0.9;
+      }
+
+      .slide {
+        padding-bottom: 30vh;
+      }
+
+      .bar-fixed {
+        display: none;
+      }
+
+      .mobilenav {
+        top: 0;
+        right: 0;
+        z-index: 999;
+        display: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: black;
+        opacity: 0.95;
+        text-align: center;
+      }
+      .title {
+        top: 60%;
+      }
+    }
+  }

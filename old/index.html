@@ -1,0 +1,623 @@
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title> Kaitlyn Landmesser</title>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"> </script>
+<script src="js/ham.js"> </script>
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Space+Mono' rel='stylesheet' type='text/css'>
+
+<link href='normalize.css' rel='stylesheet' type='text/css'> 
+<link href='skeleton.css' rel='stylesheet' type='text/css'> 
+
+<style>
+
+  /* Parallax base styles
+  --------------------------------------------- */
+
+  .parallax {
+    height: 500px; /* fallback for older browsers */
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-perspective: 300px;
+    perspective: 300px;
+    -webkit-perspective-origin-x: 100%;
+    perspective-origin-x: 100%;
+  }
+
+  .parallax__group {
+    position: relative;
+    height: 500px; /* fallback for older browsers */
+    height: 100vh;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+
+  .parallax__layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-transform-origin-x: 100%;
+    transform-origin-x: 100%;
+  }
+
+  .parallax__layer--fore {
+    -webkit-transform: translateZ(90px) scale(.7);
+    transform: translateZ(90px) scale(.7);
+    z-index: 1;
+  }
+
+  .parallax__layer--base {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    z-index: 4;
+  }
+
+  .parallax__layer--back {
+    -webkit-transform: translateZ(-300px) scale(2);
+    transform: translateZ(-300px) scale(2);
+    z-index: 3;
+  }
+
+  .parallax__layer--deep {
+    -webkit-transform: translateZ(-600px) scale(3);
+    transform: translateZ(-600px) scale(3);
+    z-index: 2;
+  }
+
+  .parallax__layer--deep {
+    -webkit-transform: translateZ(-600px) scale(1);
+    transform: translateZ(-600px) scale(1);
+    z-index: 2;
+  }
+
+
+  /* demo styles
+  --------------------------------------------- */
+
+  body, html {
+    overflow: hidden;
+  }
+
+  body {
+    font: 100% / 1.5 Arial;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    background-image: url("starz.jpg");
+    background-repeat: repeat-x;
+    background-size: contain;
+
+  }
+
+   /* centre the content in the parallax layers */
+  .title {
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  .section-title {
+    margin-bottom: 3vh;
+  }
+
+  .section-title p {
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: 2px dashed white;
+    font-family: 'Space Mono';
+    padding: 10px;
+  }
+
+  .text {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .light {
+    font-size: 19px;
+    font-weight: 300;
+    letter-spacing: 0px;
+  }
+
+
+
+  /* style the groups
+  --------------------------------------------- */
+  #home {
+    z-index: 2; /* slide under group 3 and 5 */
+  }
+  #home .parallax__layer--deep {
+  }
+
+  #xp {
+    z-index: 3; /* slide over group 4 and 6 */
+  }
+  #xp .parallax__layer--base {
+  }
+
+  #group6 {
+    z-index: 1; /* slide under group 5 and 7 */
+  }
+  #group6 .parallax__layer--back {
+  }
+
+  #group1 {
+    z-index: 4; /* slide over group 7 */
+  }
+  #group1 .parallax__layer--base {
+  }
+
+  #group2 {
+    z-index: 5; /* slide over group 7 */
+  }
+  #group2 .parallax__layer--base {
+  }
+
+  #group3 {
+    z-index: 6; /* slide over group 7 */
+  }
+  #group3 .parallax__layer--base {
+  }
+
+  /* menu */
+
+.top-animate {
+  background: #fff;
+  top: 13px !important;
+  -webkit-transform: rotate(45deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(45deg);
+}
+
+.mid-animate { opacity: 0; }
+
+.bottom-animate {
+  background: #fff;
+  top: 13px !important;
+  -webkit-transform: rotate(-225deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(-225deg);
+}
+
+.top-menu {
+  top: 5px;
+  width: 25px;
+  height: 2px;
+  border-radius: 10px;
+  background-color: #F9A530;
+}
+
+.mid-menu {
+  top: 13px;
+  width: 25px;
+  height: 2px;
+  border-radius: 10px;
+  background-color: #F9A530;
+}
+
+.bottom-menu {
+  top: 21px;
+  width: 25px;
+  height: 2px;
+  border-radius: 10px;
+  background-color: #F9A530;
+}
+
+.menui {
+  background: #fff;
+  transition: 0.6s ease;
+  transition-timing-function: cubic-bezier(.75, 0, .29, 1.01);
+  margin-top: 10px;
+  position: absolute;
+}
+
+.icon {
+  z-index: 999;
+  position: fixed;
+  display: block;
+  padding: 8px;
+  padding-top: 6px;
+  height: 32px;
+  width: 32px;
+  margin: 0px;
+  top: 0;
+  left: 0;
+}
+
+.mobilenav {
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0.95;
+  text-align: center;
+}
+
+.mobilenav li {
+  list-style-type: none;
+  text-align: center;
+  padding: 10px;
+}
+
+.mobilenav li a {
+  font-size: 150%;
+  color: white;
+  text-decoration: none;
+  font-family: 'Space Mono';
+  font-size: 30px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  width: 100%;
+}
+
+.mobilenav li a:hover {
+    color: hotpink;
+}
+
+.mobilenav li:first-child { margin-top: 60px; }
+
+  /* fade in */
+
+  .fade {
+    animation: fadein 2s;
+    -moz-animation: fadein 2s; /* Firefox */
+    -webkit-animation: fadein 7s; /* Safari and Chrome */
+    -o-animation: fadein 2s; /* Opera */
+  }
+  @keyframes fadein {
+        from {
+            opacity:0;
+        }
+        to {
+            opacity:1;
+        }
+    }
+    @-moz-keyframes fadein { /* Firefox */
+        from {
+            opacity:0;
+        }
+        to {
+            opacity:1;
+        }
+    }
+    @-webkit-keyframes fadein { /* Safari and Chrome */
+        from {
+            opacity:0;
+        }
+        to {
+            opacity:1;
+        }
+    }
+    @-o-keyframes fadein { /* Opera */
+        from {
+            opacity:0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+  /* misc
+  --------------------------------------------- */
+  .half-planet {
+    position: absolute;
+    overflow:auto;
+  }
+
+  .half-l {
+      position: relative;
+      left: 50%;
+  }
+  .half-r {
+      position: relative;
+      right: 50%;
+  }
+
+  /* nav bar */ 
+
+.header
+{
+    width: 43px;
+    height: 43px;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+}
+
+  /* rotate */
+      .venus {
+        position: absolute;
+        right: 30vh;
+        top: 70vh;
+        width: 14vh;
+      }
+
+      /*
+       * Animation 1: for Saturn.  Keep the planet in the "upright position".
+       */
+
+      .venus-satelite {
+        position: absolute;
+        
+        right: 35vh;
+        top: 75vh;
+        width: 4vh;
+
+        
+        -webkit-animation: orbit 144s linear infinite; /* Chrome, Safari 5 */
+             -moz-animation: orbit 144s linear infinite; /* Firefox 5-15 */
+               -o-animation: orbit 144s linear infinite; /* Opera 12+ */
+                  animation: orbit 144s linear infinite; /* Chrome, Firefox 16+, IE 10+, Safari 5 */ 
+      }
+
+      .jupiter-satelite {
+        position: absolute;
+        
+        top: 57vh;
+        width: 4vh;
+
+        -webkit-animation: orbit-far 50s linear infinite; /* Chrome, Safari 5 */
+             -moz-animation: orbit-far 50s linear infinite; /* Firefox 5-15 */
+               -o-animation: orbit-far 50s linear infinite; /* Opera 12+ */
+                  animation: orbit-far 50s linear infinite; /* Chrome, Firefox 16+, IE 10+, Safari 5 */ 
+      }
+
+      .jupiter-moon {
+        position: absolute;
+        
+        top: 57vh;
+        width: 4vh;
+
+        -webkit-animation: orbit-far 144s linear infinite; /* Chrome, Safari 5 */
+             -moz-animation: orbit-far 144s linear infinite; /* Firefox 5-15 */
+               -o-animation: orbit-far 144s linear infinite; /* Opera 12+ */
+                  animation: orbit-far 144s linear infinite; /* Chrome, Firefox 16+, IE 10+, Safari 5 */ 
+      }
+
+      @-webkit-keyframes orbit {
+        from {  -webkit-transform: rotate(0deg) translateX(100px); }
+        to   {  -webkit-transform: rotate(360deg) translateX(100px); }
+      }
+
+      @-moz-keyframes orbit {
+        from {  -moz-transform: rotate(0deg) translateX(100px); }
+        to   {  -moz-transform: rotate(360deg) translateX(100px); }
+      }
+
+      @-o-keyframes orbit {
+        from {  -o-transform: rotate(0deg) translateX(100px); }
+        to   {  -o-transform: rotate(360deg) translateX(100px); }
+      }
+
+      @keyframes orbit {
+        from {  transform: rotate(0deg) translateX(100px); }
+        to   {  transform: rotate(360deg) translateX(100px); }
+      }
+
+      @-webkit-keyframes orbit-far {
+        from {  -webkit-transform: rotate(0deg) translateX(300px); }
+        to   {  -webkit-transform: rotate(360deg) translateX(300px); }
+      }
+
+      @-moz-keyframes orbit-far {
+        from {  -moz-transform: rotate(0deg) translateX(300px); }
+        to   {  -moz-transform: rotate(360deg) translateX(300px); }
+      }
+
+      @-o-keyframes orbit-far {
+        from {  -o-transform: rotate(0deg) translateX(300px); }
+        to   {  -o-transform: rotate(360deg) translateX(300px); }
+      }
+
+      @keyframes orbit-far {
+        from {  transform: rotate(0deg) translateX(300px); }
+        to   {  transform: rotate(360deg) translateX(300px); }
+      }
+
+
+</style>
+</head>
+
+<body>
+  <!-- THIS IS THE MENU --> 
+
+  <div class="mobilenav"> 
+    <li><a href="#home">LANDING</a></li> 
+    <li><a href="#me">ME</a></li> 
+    <li><a href="#projects">PROJECTS</a></li> 
+    <li><a href="#xp">EXPERIENCE</a></li> 
+    <li><a href="#education">EDUCATION</a></li> 
+    <li><a href="#contact">CONTACT</a></li> 
+  </div> 
+
+  <!-- THIS IS THE ICON --> 
+<div class="header" role="banner">
+  <a href="javascript:void(0)" class="icon"> 
+     <div class="hamburger"> 
+       <div class="menui top-menu"></div> 
+       <div class="menui mid-menu"></div> 
+       <div class="menui bottom-menu"></div> 
+     </div> 
+  </a>
+</div>
+  <div class="parallax">
+
+    <!--  Home -->  
+    <div id="home" class="parallax__group">
+
+      <div class="parallax__layer parallax__layer--base">
+        <img class="mercury" style="width:15vh; padding: 20vh 10vh;" align = "right" src="mercury.png">
+        <img class="venus-satelite" src = "http://spaceflight101.com/wp-content/uploads/2015/12/5da258d9cd7d544e71377a50ed62f6b8.png">
+        <img class="venus" src="venus.png" text="Venus">
+      </div>
+
+      <div class="parallax__layer parallax__layer--fore">
+          
+          <div class="title fade">  
+              <h2>Sometimes things align.</h2>
+              <h2 class="light">But mostly there is just chaos.</h2>
+          </div>
+      </div>
+      
+    </div>
+
+    <!--  Me -->  
+    <div id="me" class="parallax__group">
+      <div class="parallax__layer parallax__layer--base">
+        <img style="width:23vh; padding: 20vh 10vh;" align = "right" src="earth.png">
+        <img style="width:15vh; padding: 70vh 10vh;" align = "right" src="mars.png">
+      </div>
+
+      <div class="parallax__layer parallax__layer--fore">
+        
+        <div class="container">
+          <div class="row">
+            <div class="two columns"> 
+              Case Studies              
+            </div>
+            <div class="five columns"> 
+              <img src="strobe.png">
+            </div>
+            <div class="five columns">  
+              <img src="hand2.png">
+            </div>
+          </div>
+      
+        </div>  
+      </div>
+      <div class="parallax__layer parallax__layer--deep">
+        <div class="title"></div>
+      </div>
+    </div>
+
+    <div id="projects" class="parallax__group">
+      <div class="parallax__layer parallax__layer--base">
+          <div class="half-planet"> <div class="half-r"><img style="width:80vh; padding: 20vh 10vh;" align = "left" src="jupiter.png"></div></div>
+
+          <img class="jupiter-satelite" src = "http://spaceflight101.com/wp-content/uploads/2015/12/5da258d9cd7d544e71377a50ed62f6b8.png">
+
+          <img class="jupiter-moon" src = "http://www.solarsystemscope.com/nexus/content/moon_images/render_europa.png">
+      </div>
+
+      <div class="parallax__layer parallax__layer--fore">
+        <div class="container"> 
+              
+          <div class="section-title"><p>001. Me</p></div>        
+
+            <div class="row">
+              <div class="three columns">
+                <img src="me.jpg" width="100%">
+              </div>
+              <div class="text fade nine columns">
+                <b>Hi, I'm Kaitlyn.</b> I've always been a wanderer, tasting new fields, new technology, new hobbies as I stumble upon them. I haven't quite settled on one thing yet, but I know something:
+                <br><br>
+                <i>If I were born 1,000 years in the future, I'd be out there, in the black, exploring this wonderous thing we're a part of.</i>
+                <br><br>
+                Nothing excites me as much as space. For now, I'm satisfied with sci-fi, planetary exploration, and stretching our current technology to it's limits.
+              </div>
+            </div>
+
+        </div>
+      </div>
+
+
+      <div class="parallax__layer parallax__layer--deep">
+        <div class="title"></div>
+      </div>
+    </div>
+
+    <div id="xp" class="parallax__group">
+      <div class="parallax__layer parallax__layer--base">
+        
+        <img style="width:60vh; padding: 20vh 0vh;" align = "right" src="saturn.png">
+
+      </div>
+
+      <div class="parallax__layer parallax__layer--fore">
+        <div class="container"> 
+          <div class="row">
+            <div class="six columns">       
+              <div class="section-title"><p>003. Experience</p></div>        
+
+              <div class="text fade">
+                0003.1 Industrial Scientific
+                <BR><BR>
+                 0003.2 Lane Department of Computer Science
+                <BR><BR>
+                  0003.3 NASA IV&amp;V
+                <BR><BR>
+              </div>
+
+              <div class="six columns">       
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="parallax__layer parallax__layer--deep">
+        <div class="title"></div>
+      </div>
+    </div>
+
+    <div id="education" class="parallax__group">
+      <div class="parallax__layer parallax__layer--base">
+        <img style="width:50vh; padding: 20vh 10vh;" align = "right" src="uranus.png">
+      </div>
+
+      <div class="parallax__layer parallax__layer--fore">
+        <div class="container"> 
+              
+              <div class="section-title"><p>004. Education</p></div>        
+
+            <div class="text fade">
+               0004.1 West Virginia University
+              <BR><BR>
+            </div>
+        </div>
+      </div>
+      <div class="parallax__layer parallax__layer--deep">
+        <div class="title"></div>
+      </div>
+    </div>
+
+
+  <div id="contact" class="parallax__group">
+      <div class="parallax__layer parallax__layer--base">
+        <img style="width:45vh; padding: 20vh 10vh;" align = "left" src="neptune.png">
+      </div>
+
+      <div class="parallax__layer parallax__layer--fore">
+        <div class="container"> 
+              
+              <div class="section-title"><p>005. Contact</p></div>        
+
+            <div class="text fade">
+              kate
+              <BR><BR>
+            </div>
+        </div>
+      </div>
+      <div class="parallax__layer parallax__layer--deep">
+        <div class="title"></div>
+      </div>
+    </div>
+
+  </div>
+</body></html>
