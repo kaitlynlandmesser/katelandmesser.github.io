@@ -8,7 +8,7 @@ function togglescroll() {
   });
 }
 
-$(document).ready(function() {
+jQuery.ready(function() {
   togglescroll()
   $(document).on("click touchstart", ".icon", function() {
     $(".mobilenav").fadeToggle(500);
@@ -28,7 +28,7 @@ $(document).ready(function() {
 
 // PUSH ESC KEY TO EXIT
 
-$(document).keydown(function(e) {
+jQuery.keydown(function(e) {
   if (e.keyCode == 27) {
     $(".mobilenav").fadeOut(500);
     $(".top-menu").removeClass("top-animate");
@@ -37,5 +37,3 @@ $(document).keydown(function(e) {
     $(".bottom-menu").removeClass("bottom-animate");
   }
 });
-
-
