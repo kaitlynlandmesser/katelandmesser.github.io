@@ -8,7 +8,7 @@ function togglescroll() {
   });
 }
 
-jQuery.ready(function() {
+$(document).ready(function() {
   togglescroll()
   $(document).on("click touchstart", ".icon", function() {
     $(".mobilenav").fadeToggle(500);
@@ -28,7 +28,7 @@ jQuery.ready(function() {
 
 // PUSH ESC KEY TO EXIT
 
-jQuery.keydown(function(e) {
+$(document).keydown(function(e) {
   if (e.keyCode == 27) {
     $(".mobilenav").fadeOut(500);
     $(".top-menu").removeClass("top-animate");
