@@ -30,6 +30,7 @@ github_username:  kaitlynlandmesser
 theme: hitchens-theme
 plugins:
   - jekyll-feed
+hide_credits: true
   
 
 # Exclude from processing.
